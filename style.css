@@ -1,0 +1,95 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #fd951f;
+  --bg-color:rgb(46, 46, 46);
+  --text-color: #f0f0f5;
+  --light-color: rgba(255, 255, 255, 0.04);
+}
+
+body{
+  font-family: 'Poppins', sans-serif;
+  color:var(--text-color);
+  background-color: rgb(46, 46, 46);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.c-h1{
+  font-size: 2.5rem;
+}
+
+form{
+  background-color:  rgba(255, 255, 255, 0.03);
+  width: 100%;
+  max-width: 500px;
+  margin:  auto;
+  padding: 32px 64px;
+  display: flex;
+  flex-direction: column;
+}
+
+form h1{
+  margin-bottom: 32px;
+}
+
+.input{
+  margin-bottom: 24px;
+  position: relative;
+}
+
+input, button{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 100%;
+
+  padding: 16px 0;
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
+
+  background-color: transparent;
+
+  outline: none;
+
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+button{
+  margin-top: 16px;
+  background-color: var(--primary-color);
+  font-weight: 600;
+}
+
+input ~ label{
+  position: absolute;
+  top:16px;
+  left: 0;
+  color: rgba(255, 255, 255, 0.6);
+  transition: .4s;
+}
+
+/* Interessante!!! Código abaixo faz dados dentro de formário terem uma animação muito sutil e bonita*/
+input:focus~label, input:valid~label{
+  transform: translateY(-24px);
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+}
+
+.input span.error{
+  display: flex;
+  padding: 0;
+  background-color: rgba(255, 0, 0, 0.2) ;
+}
+
+.input span.error.active{
+  border: 1px solid red;
+  padding: 0.4rem;
+}
