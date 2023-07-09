@@ -9,7 +9,7 @@ function customValidation(event){
         let foundError = false
 
         for (const error in field.validity){
-            if (error !== "customError" && field.validity[error]){
+            if (field.validity[error] && !field.validity.valid){
                 foundError =  true
             }
         }
@@ -20,10 +20,15 @@ function customValidation(event){
     const error = verifyError()
     console.log("Error exist: ", error)
 
-    if (error){
-        field.setCustomValidity("Esse campo é obrigatório")
+    const spanError = field.parentNode.querySelector("span.error")
+
+    if (error) {
+        spanError.classList.add("active")
+        spanError.innerHTML = "Campo Obrigatório"
+
     } else {
-        field.setCustomValidity("")
+        spanError.classList.remove("active")
+        spanError.innerHTML = ""
     }
 
     
@@ -31,6 +36,7 @@ function customValidation(event){
 
 for (field of fields ){
     field.addEventListener("invalid", customValidation)
+    field.addEventListener("blur", customValidation)
 }
 
 
